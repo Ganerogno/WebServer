@@ -1,18 +1,20 @@
 package com.example.test;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.List;
 
-@RestController
+@Controller
 public class CustomerController {
     CustomerRepository customerRepository;
     public CustomerController(CustomerRepository customerRepository){
         this.customerRepository = customerRepository;
     }
     @RequestMapping("/customers")
-    List<Customer> AllCustomers()
+    String AllCustomers()
     {
-        return customerRepository.findAll().stream().toList();
+        return "index";
     }
 }
