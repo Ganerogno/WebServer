@@ -3,8 +3,8 @@ package com.example.test;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 @Controller
 public class CustomerController {
@@ -12,9 +12,11 @@ public class CustomerController {
     public CustomerController(CustomerRepository customerRepository){
         this.customerRepository = customerRepository;
     }
+    @ResponseBody
     @RequestMapping("/customers")
-    String AllCustomers()
-    {
-        return "index";
+    public ModelAndView AllCustomers() {
+        ModelAndView modelAndView = new ModelAndView("customers");
+        modelAndView.addObject("customers", customerRepository.findAll().stream().toList());
+        return modelAndView;
     }
 }

@@ -14,6 +14,7 @@ public class TempLoadDataBase {
     CommandLineRunner initDataBase(CustomerRepository customerRepository){
         return args -> {
             customerRepository.save(new Customer("Oleg","Russia"));
+            customerRepository.save(new Customer("NotOleg","NotRussia"));
             customerRepository.findAll().forEach(customer ->
                     log.info("Loaded" + customer));
         };
