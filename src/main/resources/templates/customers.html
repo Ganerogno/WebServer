@@ -4,11 +4,11 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Customers</h1>
+<h1>Пользователи</h1>
 <table>
     <tr>
-        <th>NAME</th>
-        <th>COUNTRY</th>
+        <th>Имя</th>
+        <th>Страна</th>
     </tr>
 
     <tr th:each="customer : ${customers}">
@@ -16,5 +16,6 @@
         <td th:text="${customer.country}"></td>
     </tr>
 </table>
+<p>Зарегистрировать пользователя <a href="http://localhost:8080/registration">Здесь</a></p>
 </body>
 </html>
