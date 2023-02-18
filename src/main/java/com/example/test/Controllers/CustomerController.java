@@ -1,12 +1,12 @@
-package com.example.test.Customers;
+package com.example.test.Controllers;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.example.test.Entities.Customer;
+import com.example.test.Repositories.CustomerRepository;
+import com.example.test.Repositories.ProductRepository;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 
 @Controller
 public class CustomerController {
@@ -37,4 +37,5 @@ public class CustomerController {
         modelAndView.addObject(customer);
         return modelAndView;
     }
+
 }

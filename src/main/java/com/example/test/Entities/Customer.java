@@ -1,4 +1,4 @@
-package com.example.test.Customers;
+package com.example.test.Entities;
 
 import java.util.Objects;
 
