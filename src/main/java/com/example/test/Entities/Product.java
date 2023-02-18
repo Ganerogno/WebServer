@@ -3,8 +3,6 @@ package com.example.test.Entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import com.example.test.Categories.Category;
-import java.util.Set;
 
 @Entity
 public class Product {

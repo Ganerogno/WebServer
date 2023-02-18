@@ -1,24 +1,23 @@
 package com.example.test.Controllers;
 
 import com.example.test.Entities.Customer;
-import com.example.test.Repositories.CustomerRepository;
-import com.example.test.Repositories.ProductRepository;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.example.test.Services.CustomerService;
+import com.example.test.ServicesImpl.CustomerServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CustomerController {
-    CustomerRepository customerRepository;
-    public CustomerController(CustomerRepository customerRepository){
-        this.customerRepository = customerRepository;
+    CustomerServiceImpl customerService;
+    public CustomerController(CustomerServiceImpl customerService){
+        this.customerService = customerService;
     }
     @ResponseBody
     @RequestMapping("/customers")
     public ModelAndView AllCustomers() {
         ModelAndView modelAndView = new ModelAndView("customers");
-        modelAndView.addObject("customers", customerRepository.findAll().stream().toList());
+        modelAndView.addObject("customers", customerService.FindAll());
         return modelAndView;
     }
     @ResponseBody
@@ -31,8 +30,7 @@ public class CustomerController {
     @ResponseBody
     @PostMapping("/save")
     public ModelAndView SaveCustomer(@ModelAttribute("customer") Customer customer){
-        System.out.println(customer);
-        customerRepository.save(customer);
+        customerService.Add(customer);
         ModelAndView modelAndView = new ModelAndView("welcome");
         modelAndView.addObject(customer);
         return modelAndView;
