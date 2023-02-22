@@ -4,10 +4,12 @@ import com.example.test.Controllers.CustomerController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.sql.*;
 
 @SpringBootApplication
+@ConfigurationProperties(prefix = "prod")
 public class WebApplication {
 
 //	public static final String USER_NAME = "root";

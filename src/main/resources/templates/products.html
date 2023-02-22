@@ -5,9 +5,13 @@
     <title>Список товаров</title>
 </head>
 <body>
-    <h1>Список товаров</h1>
-    <tr th:each="product : ${products}">
-        <td th:text="${product.name}">
-    </tr>
+    <table>
+        <tr>
+            <th>Название</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}">
+        </tr>
+    </table>
 </body>
 </html>
