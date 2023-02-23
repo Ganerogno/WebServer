@@ -1,14 +1,11 @@
 package com.example.test.ServicesImpl;
 
-import com.example.test.Entities.Customer;
-import com.example.test.Repositories.CustomerRepository;
+import com.example.test.Entities.User;
+import com.example.test.Repositories.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.List;
@@ -18,10 +15,10 @@ import java.util.List;
 class CustomerServiceImplTest {
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private UserRepository customerRepository;
 
     @Autowired
-    private CustomerServiceImpl customerService;
+    private UserServiceImpl customerService;
 
 //    @BeforeEach
 //    public void setup(){
@@ -30,14 +27,14 @@ class CustomerServiceImplTest {
     @Test
     void findAll() {
         System.out.println();
-        List<Customer> customerList = customerService.FindAll().stream().toList();
+        List<User> customerList = customerService.FindAll().stream().toList();
         Assertions.assertNotNull(customerList);
     }
     @Test
     void add() {
-        customerService.Add(new Customer("TestOleg","TestOleg@mail.ru",
+        customerService.Add(new User("TestOleg","TestOleg@mail.ru",
                     "TestOlegPas","TestRussia", "TestMoscow", "FeMale"));
-        List<Customer> customerList =  customerService.FindAll();
+        List<User> customerList =  customerService.FindAll();
         Assertions.assertNotNull(customerList);
     }
 }

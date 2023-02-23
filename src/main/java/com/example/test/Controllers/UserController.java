@@ -1,7 +1,7 @@
 package com.example.test.Controllers;
 
-import com.example.test.Entities.Customer;
-import com.example.test.ServicesImpl.CustomerServiceImpl;
+import com.example.test.Entities.User;
+import com.example.test.ServicesImpl.UserServiceImpl;
 import com.example.test.ServicesImpl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,32 +9,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class CustomerController {
+public class UserController {
     @Autowired
-    CustomerServiceImpl customerService;
+    UserServiceImpl userService;
     @Autowired
     ProductServiceImpl productService;
 
     @ResponseBody
-    @RequestMapping("/customers")
-    public ModelAndView AllCustomers() {
-        ModelAndView modelAndView = new ModelAndView("customers");
-        modelAndView.addObject("customers", customerService.FindAll());
+    @RequestMapping("/users")
+    public ModelAndView AllUsers() {
+        ModelAndView modelAndView = new ModelAndView("users");
+        modelAndView.addObject("user", userService.FindAll());
         return modelAndView;
     }
     @ResponseBody
     @RequestMapping("/registration")
-    public ModelAndView CustomerRegister(){
+    public ModelAndView UserRegister(){
         ModelAndView modelAndView = new ModelAndView("registration");
-        modelAndView.addObject("customer", new Customer());
+        modelAndView.addObject("user", new User());
         return modelAndView;
     }
     @ResponseBody
     @PostMapping("/save")
-    public ModelAndView SaveCustomer(@ModelAttribute("customer") Customer customer){
-        customerService.Add(customer);
+    public ModelAndView SaveUser(@ModelAttribute("user") User user){
+        userService.Add(user);
         ModelAndView modelAndView = new ModelAndView("welcome");
-        modelAndView.addObject(customer);
+        modelAndView.addObject(user);
         return modelAndView;
     }
 

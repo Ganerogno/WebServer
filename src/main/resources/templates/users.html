@@ -11,9 +11,9 @@
         <th>Страна</th>
     </tr>
 
-    <tr th:each="customer : ${customers}">
-        <td th:text="${customer.name}">
-        <td th:text="${customer.country}"></td>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.name}">
+        <td th:text="${user.country}"></td>
     </tr>
 </table>
 <p>Зарегистрировать пользователя <a href="http://localhost:8080/registration">Здесь</a></p>

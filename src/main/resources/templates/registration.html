@@ -10,7 +10,7 @@
     <h3>Регистрация пользователя</h3>
 </div>
 <div>
-    <form th:action="@{/save}" method="post" th:object="${customer}">
+    <form th:action="@{/save}" method="post" th:object="${user}">
         <div>
             <label for="inputName">Имя</label>
             <input type="text" class="form-control" id="inputName" th:field="*{name}">

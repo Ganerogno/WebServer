@@ -5,7 +5,8 @@ import java.util.Objects;
 import jakarta.persistence.*;
 
 @Entity
-public class Customer {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,9 +18,9 @@ public class Customer {
     private String city;
     private String gender;
 
-    public Customer(){}
-    public Customer(String name, String email, String password,
-                    String country, String city, String gender){
+    public User(){}
+    public User(String name, String email, String password,
+                String country, String city, String gender){
         this.name = name;
         this.email = email;
         this.password = password;
@@ -59,14 +60,14 @@ public class Customer {
     {
         if(this == o)
             return true;
-        if(!(o instanceof Customer))
+        if(!(o instanceof User))
             return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(this.id, customer.id) &&
-                Objects.equals(this.name, customer.name) &&
-                Objects.equals(this.email, customer.email) &&
-                Objects.equals(this.country, customer.country) &&
-                Objects.equals(this.city, customer.city);
+        User user = (User) o;
+        return Objects.equals(this.id, user.id) &&
+                Objects.equals(this.name, user.name) &&
+                Objects.equals(this.email, user.email) &&
+                Objects.equals(this.country, user.country) &&
+                Objects.equals(this.city, user.city);
     }
     @Override
     public int hashCode()
@@ -76,7 +77,7 @@ public class Customer {
     }
     @Override
     public String toString() {
-        return "Customer{ " + "id=" + this.id +
+        return "User{ " + "id=" + this.id +
                 ", name="+this.name + ", email="+this.email +
                 ", country=" + this.country + ", city="+this.city + " }\n";
     }

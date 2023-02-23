@@ -1,6 +1,6 @@
 package com.example.test;
 
-import com.example.test.Controllers.CustomerController;
+import com.example.test.Controllers.UserController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,7 +34,7 @@ public class WebApplication {
 //		}
 //	}
 	@Autowired
-	private CustomerController customerController;
+	private UserController userController;
 	public static void main(String[] args) throws  ClassNotFoundException, SQLException{
 
 		SpringApplication.run(WebApplication.class, args);
