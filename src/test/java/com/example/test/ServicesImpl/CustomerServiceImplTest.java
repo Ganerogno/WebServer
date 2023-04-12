@@ -27,14 +27,14 @@ class CustomerServiceImplTest {
     @Test
     void findAll() {
         System.out.println();
-        List<User> customerList = customerService.FindAll().stream().toList();
+        List<User> customerList = customerService.findAll().stream().toList();
         Assertions.assertNotNull(customerList);
     }
     @Test
     void add() {
-        customerService.Add(new User("TestOleg","TestOleg@mail.ru",
+        customerService.save(new User("TestOleg","TestOleg@mail.ru",
                     "TestOlegPas","TestRussia", "TestMoscow", "FeMale"));
-        List<User> customerList =  customerService.FindAll();
+        List<User> customerList =  customerService.findAll();
         Assertions.assertNotNull(customerList);
     }
 }

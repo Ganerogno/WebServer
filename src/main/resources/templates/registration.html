@@ -10,10 +10,11 @@
     <h3>Регистрация пользователя</h3>
 </div>
 <div>
-    <form th:action="@{/save}" method="post" th:object="${user}">
+    <form th:action="@{/registration}" method="post" th:object="${request}">
         <div>
             <label for="inputName">Имя</label>
             <input type="text" class="form-control" id="inputName" th:field="*{name}">
+            <div th:text="${usernameError}"></div>
         </div>
         <div>
             <label for="inputEmail">Почта</label>
