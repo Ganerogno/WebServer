@@ -5,6 +5,7 @@ import com.example.test.Authentication.AuthenticationResponse;
 import com.example.test.Authentication.RegisterRequest;
 import com.example.test.Entities.User;
 import com.example.test.Services.AuthenticationService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,12 +46,19 @@ public class AuthenticationController {
     }
     @GetMapping("/login")
     public Model UserLogin(Model model){
-        System.out.println("hi");
         return model.addAttribute("request", new AuthenticationRequest());
     }
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse>authenticate(
-            @ModelAttribute("request") AuthenticationRequest request){
+    public ResponseEntity<AuthenticationResponse>authenticate (
+            @ModelAttribute("request") AuthenticationRequest request,
+            HttpServletResponse response) throws IOException {
+        Cookie cookie = new Cookie("jwt", authenticationService.authenticate(request).getToken());
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
         return ResponseEntity.ok(authenticationService.authenticate(request));
+    }
+    @GetMapping("/hello")
+    public Model UserHello(Model model){
+        return model.addAttribute("request", new AuthenticationRequest());
     }
 }

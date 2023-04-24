@@ -13,4 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AuthenticationResponse{
 
     private String token;
+
+    @Override public String toString(){
+        return token;
+    }
 }

@@ -3,6 +3,7 @@ package com.example.test.Configurations;
 import com.example.test.Services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 @Component
 @RequiredArgsConstructor
@@ -33,11 +35,25 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String userName;
-        if(authHeader == null || authHeader.startsWith("Bearer")){
+        Cookie[] cookies = request.getCookies();
+        Cookie cookie = null;
+        if(cookies == null){
             filterChain.doFilter(request, response);
             return;
         }
-        jwt = authHeader.substring(7);
+
+        for(int i = 0; i < cookies.length; i++){
+            cookie = cookies[i];
+            System.out.println(cookie);
+            if(cookie.getName().equals("jwt"))
+                break;
+        }
+        if(cookie == null || !cookie.getName().equals("jwt")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        jwt = cookie.getValue();
+        System.out.println("jwt: " + jwt);
         userName = jwtService.extractUsername(jwt);
         if(userName != null
                 && SecurityContextHolder.getContext().getAuthentication() == null){
