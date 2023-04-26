@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
   <title>Авторизация</title>
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./styles/style.css" />
   <meta charset="UTF-8" />
 </head>
 <body>
@@ -13,7 +13,10 @@
   You have been logged out.
 </div>
 
-<form th:action="@{/login}" method="post" th:object="${request}">
+<form class="inputform" th:action="@{/login}" method="post" th:object="${request}">
+  <div>
+    <h3>Авторизация пользователя</h3>
+  </div>
   <div>
     <label for="inputName">Имя</label>
     <input type="text" class="form-control" id="inputName" th:field="*{name}">
@@ -23,8 +26,11 @@
     <label for="inputPassword">Пароль</label>
     <input type="password" class="form-control" id="inputPassword" th:field="*{password}">
   </div>
-  <div><input type="submit" value="Sign In"/></div>
+  <div>
+    <button type="submit">Sign in</button>
+    <button href="/registration">Sign on</button>
+  </div>
 </form>
-<div><a href="/registration">registration</a></div>
+
 </body>
 </html>

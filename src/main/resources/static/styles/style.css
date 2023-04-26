@@ -1,0 +1,42 @@
+body {
+    margin: 0px;
+    background-color: white;
+}
+h3 {
+    text-align: center;
+    font-size: 28px;
+}
+.inputform {
+    margin: auto;
+    margin-top: 80px;
+    width: min-content;
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(187, 178, 228);
+    border-radius: 20px;
+}
+.topnav {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    /* padding-top: 10px; */
+    height: 30px;
+    width: 100vw;
+    background-color: black;
+    z-index: 1;
+}
+.topnav-item1 {
+    position: fixed;
+    right:50px;
+}
+.topnav-item2 {
+    position: fixed;
+    right:120px;
+}
+.products-table {
+    position: absolute;
+    margin: 30px 10vw;
+    height: 100vh;
+    width: 80vw;
+    background-color: lightgray;
+}

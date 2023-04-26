@@ -2,10 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
   <title>Spring Security Example</title>
+  <link rel="stylesheet" href="./styles/style.css" />
 </head>
 <body>
-<h1>Welcome!</h1>
+  <div class="topnav">
+    <button class="topnav-item1" type="submit">Sign in</button>
+    <button class="topnav-item2" type="submit">Sign on</button>
+    <form class="topnav-item1" th:action="@{/logout}" method="post">
+      <button type="submit">Sign out</button>
+    </form>
+  </div>
+  <div class="products-table">
+    <table>
+      
+    </table>
+  </div>
 
-<p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
 </body>
 </html>

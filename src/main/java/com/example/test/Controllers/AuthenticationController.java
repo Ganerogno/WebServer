@@ -57,7 +57,7 @@ public class AuthenticationController {
         response.addCookie(cookie);
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
-    @GetMapping("/hello")
+    @GetMapping("/home")
     public Model UserHello(Model model){
         return model.addAttribute("request", new AuthenticationRequest());
     }
