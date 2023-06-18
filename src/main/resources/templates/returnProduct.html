@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Возврат товара</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <meta charset="UTF-8" />
+</head>
+<body>
+
+<form class="inputform" th:action="@{/returnProduct}" method="post" th:object="${request}">
+    <h3>Выберите товар, который хотите вернуть</h3>
+  <div>
+    <label for="inputName">Имя</label>
+    <input type="text" class="form-control" id="inputName" th:field="*{name}">
+    <div th:text="${usernameError}"></div>
+  </div>
+  <h3>Укажите причину возврата</h3>
+  <div class="form-group">
+    <input type="password" class="form-control" id="inputPassword" th:field="*{reason}">
+  </div>
+  <div>
+    <button type="submit">Отправить</button>
+  </div>
+</form>
+<form class="inputform" th:action="@{/ordersHistory}" method="get" th:object="${request}">
+    <div>
+      <button type="submit">Назад</button>
+    </div>
+</form>
+
+</body>
+</html>

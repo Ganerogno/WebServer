@@ -1,4 +1,4 @@
-package com.example.test.Authentication;
+package com.example.test.Requests;
 
 import com.example.test.Entities.User;
 import lombok.AllArgsConstructor;

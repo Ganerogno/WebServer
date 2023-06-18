@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 
 @SpringBootApplication
@@ -38,6 +40,7 @@ public class WebApplication {
 	public static void main(String[] args) throws  ClassNotFoundException, SQLException{
 
 		SpringApplication.run(WebApplication.class, args);
+//		System.out.println(path.toAbsolutePath());
 //		Class.forName("com.mysql.cj.jdbc.Driver");
 //
 //		statement.executeUpdate("USE online_store");

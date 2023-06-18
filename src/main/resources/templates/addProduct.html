@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Добавить товар</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <meta charset="UTF-8" />
+</head>
+<body>
+<div>
+  <form class="inputform" th:action="@{/admin/addProduct}" method="post" th:object="${request}" enctype="multipart/form-data">
+    <input type="text" class="form-control" th:field="*{name}">
+    <input type="text" class="form-control" th:field="*{description}">
+    <input type="text" class="form-control" th:field="*{price}">
+    <input type="file" class="form-control" th:field="*{file}" multiple="multiple">
+    <button type="submit" class="btn btn-primary">Отправить</button>
+  </form>
+</div>
+</body>
+</html>

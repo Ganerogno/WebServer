@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <meta charset="UTF-8" />
+</head>
+<body>
+<div>
+  <form class="inputform" th:action="@{/registration}" method="post" th:object="${request}">
+    <div>
+      <h3>Регистрация пользователя</h3>
+    </div>
+    <div>
+      <div for="inputName">Имя</div>
+      <input type="text" class="form-control" id="inputName" th:field="*{name}">
+      <div th:text="${usernameError}"></div>
+    </div>
+    <div>
+      <div for="inputEmail">Почта</div>
+      <input type="text" class="form-control" id="inputEmail" th:field="*{email}">
+    </div>
+    <div class="form-group">
+      <div for="inputPassword">Пароль</div>
+      <input type="password" class="form-control" id="inputPassword" th:field="*{password}">
+    </div>
+    <div>
+      <div for="inputCountry">Страна</div>
+      <input type="text" class="form-control" id="inputCountry" th:field="*{country}">
+    </div>
+    <div>
+      <div for="inputCity">Город</div>
+      <input type="text" class="form-control" id="inputCity" th:field="*{city}">
+    </div>
+    <div class="form-group">
+      <div>Пол</div>
+      <label class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Male" th:field="*{gender}">
+        <label class="form-check-label" for="inlineRadio1">Male</label>
+      </label>
+      <label class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Female" th:field="*{gender}">
+        <label class="form-check-label" for="inlineRadio2">Female</label>
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+  </form>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.example.test.Authentication;
+package com.example.test.Responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class AuthenticationResponse{
 
-    private String name;
-    private String password;
+    private String token;
+
+    @Override public String toString(){
+        return token;
+    }
 }

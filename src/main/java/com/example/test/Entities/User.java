@@ -19,7 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User implements UserDetails {
 
     @Id
@@ -35,6 +35,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "basket",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    List<Product> chosenProducts;
+
     public User(String name, String email, String password,
                 String country, String city, String gender){
         this.name = name;
@@ -43,6 +50,9 @@ public class User implements UserDetails {
         this.country = country;
         this.city = city;
         this.gender = gender;
+    }
+    public List<Product> getChosenProducts(){
+        return chosenProducts;
     }
     @Override
     public String getPassword() { return password; }

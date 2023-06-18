@@ -14,12 +14,12 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @ResponseBody
-    @GetMapping("/addProduct")
-    public ModelAndView AddProduct(){
-        Product product = new Product("apple");
-        ModelAndView modelAndView = new ModelAndView("addProduct");
-        productRepository.save(product);
-        return modelAndView;
-    }
+//    @ResponseBody
+//    @GetMapping("/addProduct")
+//    public ModelAndView AddProduct(){
+//        Product product = new Product("apple");
+//        ModelAndView modelAndView = new ModelAndView("addProduct");
+//        productRepository.save(product);
+//        return modelAndView;
+//    }
 }

@@ -8,11 +8,15 @@ import com.example.test.Services.UserService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,6 +25,12 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @PersistenceContext()
     private EntityManager entityManager;
+
+    @Override
+    public User findByName(String name) {
+        return userRepository.findByUsername(name).get();
+    }
+
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -62,4 +72,17 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         }
         return user;
     }
+//    private List<GrantedAuthority> getGrantedAuthorities(List<String> privileges){
+//        List<GrantedAuthority> authorities = new ArrayList<>();
+//        for(String privilege : privileges){
+//            authorities.add(new SimpleGrantedAuthority(privilege));
+//        }
+//        return authorities;
+//    }
+//
+//    private Collection<? extends GrantedAuthority> getAuthorities(
+//            Collection<Role> roles
+//    ){
+//
+//    }
 }

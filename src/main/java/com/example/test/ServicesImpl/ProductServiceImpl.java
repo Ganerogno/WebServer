@@ -13,21 +13,25 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
     @Override
-    public void Add(Product customer){
+    public void add(Product customer){
         productRepository.save(customer);
     }
     @Override
-    public void Delete(Long id){
+    public void delete(Long id){
         productRepository.deleteById(id);
     }
     @Override
-    public Product FindById(Long id){
+    public Product findById(Long id){
         return productRepository.findById(id).get();
     }
+
     @Override
-    public List<Product> FindAll(){
+    public Product findByName(String name) {
+        return productRepository.findByName(name).get();
+    }
+
+    @Override
+    public List<Product> findAll(){
         return productRepository.findAll().stream().toList();
     }
-    @Override
-    public List<Product> FindByCategory(){return null;}//temp
 }

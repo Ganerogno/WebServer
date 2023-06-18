@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Enumeration;
 
 @Component
@@ -37,23 +38,22 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         final String userName;
         Cookie[] cookies = request.getCookies();
         Cookie cookie = null;
+
+        //Arrays.stream(cookies).findAny(e=>e.getName() == "jwt");
+        for(int i = 0; i < cookies.length; i++){
+            cookie = cookies[i];
+            if(cookie.getName().equals("jwt"))
+                break;
+        }
         if(cookies == null){
             filterChain.doFilter(request, response);
             return;
         }
-
-        for(int i = 0; i < cookies.length; i++){
-            cookie = cookies[i];
-            System.out.println(cookie);
-            if(cookie.getName().equals("jwt"))
-                break;
-        }
-        if(cookie == null || !cookie.getName().equals("jwt")) {
+        if(!cookie.getName().equals("jwt")) {
             filterChain.doFilter(request, response);
             return;
         }
         jwt = cookie.getValue();
-        System.out.println("jwt: " + jwt);
         userName = jwtService.extractUsername(jwt);
         if(userName != null
                 && SecurityContextHolder.getContext().getAuthentication() == null){

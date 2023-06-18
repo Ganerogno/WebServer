@@ -6,33 +6,33 @@
     <meta charset="UTF-8" />
 </head>
 <body>
-<div>
-    <form class="inputform" th:action="@{/registration}" method="post" th:object="${request}">
-        <div>
-            <h3>Регистрация пользователя</h3>
-        </div>
-        <div>
+<div class="input-form">
+    <div>
+        <h3>Регистрация пользователя</h3>
+    </div>
+    <form th:action="@{/registration}" method="post" th:object="${request}">
+        <div class="input-string">
             <div for="inputName">Имя</div>
             <input type="text" class="form-control" id="inputName" th:field="*{name}">
             <div th:text="${usernameError}"></div>
         </div>
-        <div>
+        <div class="input-string">
             <div for="inputEmail">Почта</div>
             <input type="text" class="form-control" id="inputEmail" th:field="*{email}">
         </div>
-        <div class="form-group">
+        <div class="input-string">
             <div for="inputPassword">Пароль</div>
             <input type="password" class="form-control" id="inputPassword" th:field="*{password}">
         </div>
-        <div>
+        <div class="input-string">
             <div for="inputCountry">Страна</div>
             <input type="text" class="form-control" id="inputCountry" th:field="*{country}">
         </div>
-        <div>
+        <div class="input-string">
             <div for="inputCity">Город</div>
             <input type="text" class="form-control" id="inputCity" th:field="*{city}">
         </div>
-        <div class="form-group">
+        <div class="input-string">
             <div>Пол</div>
             <label class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Male" th:field="*{gender}">
@@ -44,6 +44,9 @@
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+    <form th:action="@{/login}" method="get">
+        <button type="submit">Назад</button>
     </form>
 </div>
 </body>

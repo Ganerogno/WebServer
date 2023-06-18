@@ -1,22 +1,16 @@
 package com.example.test.Services;
 
-import com.example.test.Authentication.AuthenticationRequest;
-import com.example.test.Authentication.AuthenticationResponse;
-import com.example.test.Authentication.RegisterRequest;
+import com.example.test.Requests.AuthenticationRequest;
+import com.example.test.Responses.AuthenticationResponse;
+import com.example.test.Requests.RegisterRequest;
 import com.example.test.Entities.Role;
 import com.example.test.Entities.User;
 import com.example.test.Repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
